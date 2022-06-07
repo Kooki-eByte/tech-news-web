@@ -1,0 +1,13 @@
+.tech-ul {
+  list-style: none;
+  text-align: center;
+  font-size: 2rem;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 8px;
+}
