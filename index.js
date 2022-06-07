@@ -1,6 +1,6 @@
-const API_KEY = "93e999575aa648f3bb07f76e24a88977"
+const API_KEY = "pub_810759e5175cb001469d3860059de22c3945"
 const TOPIC = "coding"
-const URL = `https://newsapi.org/v2/everything?q=${TOPIC}&apikey=${API_KEY}`
+const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&language=en&q=${TOPIC}`
 const ULELEMENT = document.querySelector(".tech-ul")
 
 window.addEventListener("load", () => {
@@ -16,7 +16,7 @@ const startSearch = async () => {
       console.log(data);
 
       // Display articles on page
-      displayArticles(data.articles)
+      displayArticles(data.results)
     })
 }
 
@@ -26,12 +26,13 @@ const displayArticles = (articles) => {
     let linkElement = document.createElement("a");
     let breakTag = document.createElement("br")
     let imageElement = document.createElement("img")
-    linkElement.href = article.url;
+    linkElement.href = article.link;
     linkElement.target = "_blank";
     linkElement.textContent = "article";
     liElement.textContent = `${article.title} | Link : `;
     liElement.appendChild(linkElement);
-    imageElement.src = article.urlToImage;
+    if (article.image_url) imageElement.src = article.image_url;
+    
     
     ULELEMENT.appendChild(liElement);
     ULELEMENT.appendChild(breakTag);
